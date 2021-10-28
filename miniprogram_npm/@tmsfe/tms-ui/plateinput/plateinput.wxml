@@ -1,0 +1,54 @@
+<wxs module="filter">
+  module.exports = function (key, filterKeys = []) {
+    return filterKeys.indexOf(key) > -1;
+  }
+</wxs>
+
+<view class="wrap {{skin}}">
+  <view id="plate-input-fields" class="plate">
+    <view
+      wx:for="{{fields}}"
+      wx:key="index"
+      data-index="{{index}}"
+      data-value=""
+      class="item {{showKeyboard && activeField === index ? 'focus' : ''}}"
+      catchtap="onFieldTap"
+    >
+      <text class="input {{item >= '0' && item <= '9' || item >= 'A' && item <= 'Z' ? '' : 'province'}}" wx:if="{{item}}">{{item}}</text>
+      <view class="ph" wx:if="{{index === fields.length - 1 && !item}}">
+        <block wx:if="{{skin === 'carinfo-plate'}}">
+          <view class="new-text">新</view>
+          能源
+        </block>
+        <block wx:else>新能源</block>
+      </view>
+    </view>
+  </view>
+  <view class="keyboard {{showKeyboard ? 'show' : ''}}">
+    <view class="btn-wrap"><view class="btn" catchtap="closeKeyBoard" hover-class="hover">完成</view></view>
+    <view
+      class="line"
+      wx:for="{{keyboard}}"
+      wx:for-item="line"
+      wx:for-index="lineIndex"
+      wx:key="lineIndex"
+    >
+      <view wx:if="{{lineIndex === keyboard.length - 1}}" data-key="type" catchtap="onKeyTap" class="key control" hover-class="hover">{{keyboardType === 'province' ? 'ABC' : '省份'}}</view>
+      <view
+        class="key {{filter(key, disabledKeys) ? 'disabled' : ''}}"
+        hover-class="hover"
+        wx:for="{{line}}"
+        wx:for-item="key"
+        wx:for-index="keyIndex"
+        wx:key="keyIndex"
+        data-key="{{key}}"
+        data-disabled="{{filter(key, disabledKeys)}}"
+        catchtap="onKeyTap"
+      >{{key}}</view>
+      <view wx:if="{{lineIndex === keyboard.length - 1}}" data-key="backspace" catchtap="onKeyTap" class="key control" hover-class="hover">
+        <image class="backspace-icon" mode="aspectFit" src="https://static.img.tai.qq.com/mp/components/plateinput/backspace.png" />
+      </view>
+    </view>
+  </view>
+  <view class="mask" wx:if="{{showKeyboard}}" catchtap="closeKeyBoard" />
+</view>

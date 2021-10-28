@@ -1,0 +1,31 @@
+<view class="bannerwrap" wx:if="{{!rendered}}">
+  <view class="bg" style="width: {{width}}rpx; height: {{height}}rpx; border-radius: {{borderRadius}}rpx; margin-left: {{display=='inline'?'auto':(750-width)/2+'rpx'}}; background-color: {{backgroundColor}}" />
+</view>
+<view class="bannerwrap {{deviceClass}}" wx:elif="{{banners.length > 0}}" style="margin-top: {{marginTop}}rpx; margin-bottom: {{marginBottom}}rpx; width: {{display=='inline'?width+'rpx':'100%'}}; height: {{height}}rpx;">
+  <view wx:if="{{banners.length == 1}}" class="banner single" style="width: {{width}}rpx; margin-left: {{display=='inline'?'auto':(750-width)/2+'rpx'}};">
+    <image class="banner-item" style="height: {{height}}rpx; border-radius: {{borderRadius}}rpx" src="{{banners[0].imgURL}}" mode="aspectFill" bindtap="onBannerClick" data-id="{{banners[0].ID}}"/>
+  </view>
+  <block wx:elif="{{banners.length > 1}}">
+    <swiper class="banner"
+            style="width: {{display=='inline'?width+'rpx':'750rpx'}}"
+            duration="{{duration}}"
+            autoplay="{{autoplay}}"
+            circular="{{circular}}"
+            interval="{{interval}}"
+            current="{{currentIndex}}"
+            bindchange="change">
+      <swiper-item class="item-wrapper" style="width: {{width}}rpx; padding: 0 {{display=='inline'?0:(750-width)/2}}rpx;" wx:for="{{banners}}" wx:key="index">
+        <image class="banner-item" style="height: {{height}}rpx; border-radius: {{display=='inline'?0:borderRadius}}rpx" src="{{item.imgURL}}" mode="aspectFill" bindtap="onBannerClick" data-id="{{item.ID}}" />
+      </swiper-item>
+    </swiper>
+    <block wx:if="{{display=='inline' && borderRadius > 0}}">
+      <image src="{{borderRadiusImg}}" class="corner corner-{{index}}" wx:for="[0,1,2,3]" wx:key="index" style="width:{{borderRadius}}rpx;height:{{borderRadius}}rpx" />
+    </block>
+    <view class="indicator {{indicatorPos}}" style="bottom:{{indicatorPosVer}}rpx;padding:0 {{indicatorPosHor}}rpx">
+      <view wx:for="{{banners}}"
+            wx:key="index"
+            class="indicator-item {{index == currentIndex ? 'active' : ''}}"
+            style="transition: width {{duration/1000}}s ease" />
+    </view>
+  </block>
+</view>

@@ -1,0 +1,8 @@
+<view class="drawer {{containerVisible ? 'container-visible' : ''}} {{mode}} {{animation ? 'animated' : ''}}">
+  <view class="mask {{visible ? 'visible' : ''}}" bindtap="clickMask" catchtouchmove="stopPropagation">
+    <view class="content {{showClose ? 'round-radius' : ''}}">
+      <view class="close" bindtap="close"><image wx:if="{{showClose}}" class="icon" src="https://static.img.tai.qq.com/mp/components/drawer/close.png" /></view>
+      <slot catchtap="stopPropagation" />
+    </view>
+  </view>
+</view>

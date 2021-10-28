@@ -1,0 +1,177 @@
+@import "./open-city.wxss";
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 88rpx;
+}
+.keyboard {
+  background: #e7e8eb;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  padding-bottom: 80rpx;
+  z-index: 101;
+  transition: transform .2s ease-in-out;
+  transform: translate3d(0, 100%, 0);
+}
+.keyboard.show {
+  transform: translate3d(0, 0, 0);
+}
+.keyboard .line {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 22rpx;
+}
+.keyboard .line:last-of-type {
+  margin: 0;
+}
+.keyboard .line .key {
+  font-size: 40rpx;
+  text-align: center;
+  color: #030303;
+  display: flex;
+  flex: 0 0 8.1%;
+  margin: 0 .95%;
+  background: #fff;
+  border-radius: 8rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2rpx 2rpx rgba(0, 0, 0, .39);
+  transition: all .2s ease-out .5s;
+}
+.key.disabled {
+  opacity: .4;
+}
+.keyboard .line .key.control {
+  flex: 0 0 13.1%;
+  font-size: 36rpx;
+  background: #cfd1d4;
+}
+.key.control .backspace-icon {
+  width: 46rpx;
+  height: 34rpx;
+}
+.keyboard .btn-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.keyboard .btn-wrap .btn {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #4a89ff;
+  padding: 30rpx 40rpx;
+}
+.plate {
+  display: flex;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+.plate .item {
+  box-sizing: border-box;
+  height: 100%;
+  flex: 0 0 11.4%;
+  border-radius: 8rpx;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: #333;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+.plate .item.focus {
+  border: 2rpx solid #3f84ff;
+}
+.plate .item .input {
+  position: relative;
+  z-index: 1;
+  font-weight: bold;
+  font-size: 44rpx;
+}
+.plate .item .input.province {
+  font-size: 40rpx;
+}
+.plate .item.focus .input {
+  animation: focus 1s infinite ease;
+}
+
+@keyframes focus {
+  0% { opacity: 1; }
+  50% { opacity: .6; }
+  100% { opacity: 1; }
+}
+
+.plate .item .ph {
+  width: 28rpx;
+  font-size: 18rpx;
+  line-height: 20rpx;
+  color: #d9d9d9;
+  text-align: center;
+  z-index: 1;
+}
+.mask {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 98;
+}
+.hover {
+  opacity: .4 !important; /* stylelint-disable-line */
+  transition: all 0s ease-out !important; /* stylelint-disable-line */
+}
+.key.hover {
+  background: #a0a0a0 !important; /* stylelint-disable-line */
+}
+
+@import "./carinfo-plate.wxss";
+
+@media (min-width: 768px) { /* 仅在 768px 或更宽的屏幕上生效的样式规则 */
+  .keyboard .line {
+    margin: 0 0 10rpx;
+  }
+  .keyboard .line .key {
+    font-size: 24rpx;
+    line-height: 48rpx;
+    height: 48rpx;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2rpx 2rpx rgba(0, 0, 0, .39);
+    transition: all .2s ease-out .5s;
+  }
+  .keyboard .line .key.control {
+    font-size: 28rpx;
+  }
+  .keyboard {
+    background: #e7e8eb;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding-bottom: 20rpx;
+    z-index: 99;
+    transition: transform .2s ease-in-out;
+    transform: translate3d(0, 100%, 0);
+  }
+  .keyboard .btn-wrap .btn {
+    font-size: 26rpx;
+    padding: 10rpx 20rpx;
+  }
+  .key.control .backspace-icon {
+    width: 36rpx;
+  }
+}

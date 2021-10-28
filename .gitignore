@@ -1,0 +1,9 @@
+project.config.json
+project.private.config.json
+.project.config.json
+.DS_Store
+*/.DS_Store
+assets/.DS_Store
+.idea
+node_modules/
+.history/

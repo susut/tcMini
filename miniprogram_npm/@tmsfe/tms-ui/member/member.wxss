@@ -1,0 +1,112 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 74rpx;
+  padding: 0 42rpx;
+  background-image: linear-gradient(to right, #171835, #42435c);
+}
+.info {
+  display: flex;
+  align-items: center;
+  color: #daa54f;
+}
+.icon {
+  width: 226rpx;
+}
+.desc {
+  margin-left: 22rpx;
+  color: #fcd088;
+  font-size: 26rpx;
+}
+.hl {
+  color: #fa6400;
+}
+.btn {
+  width: 140rpx;
+  line-height: 54rpx;
+  border-radius: 27rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #730300;
+  text-align: center;
+  background-image: linear-gradient(to right, #f3cd61, #fddc84);
+}
+
+/* 加油特殊样式 */
+.refuel {
+  padding: 0 40rpx;
+}
+.refuel .card {
+  position: relative;
+  height: 242rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  background-color: #fffcf6;
+  overflow: hidden;
+}
+.refuel .card::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 2rpx solid #f4d394;
+  border-radius: 16rpx;
+}
+.refuel .head {
+  position: absolute;
+  left: -4rpx;
+  top: -4rpx;
+  right: 0;
+  height: 92rpx;
+  background-image: url(https://static.img.tai.qq.com/mp/components/member/card-head-1.png);
+  background-size: 100% 68%;
+  background-repeat: no-repeat;
+  color: #333;
+  font-size: 24rpx;
+}
+.refuel .head .content {
+  padding-left: 278rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+}
+.refuel .body {
+  margin-top: 98rpx;
+  padding: 0 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.refuel .coupon {
+  width: 332rpx;
+  height: 70rpx;
+  background-image: url(https://static.img.tai.qq.com/mp/components/member/coupon-1.png);
+  background-size: 100% 100%;
+  box-shadow: 4rpx 12rpx 28rpx 2rpx #bec2c833;
+  font-size: 28rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.refuel .price {
+  margin-top: 4rpx;
+  font-family: "DIN Alternate";
+  font-size: 36rpx;
+  color: #333;
+  font-weight: bold;
+}
+.refuel .price .symbol {
+  margin-right: 4rpx;
+  font-size: 26rpx;
+}
+.refuel .foot {
+  margin-top: 28rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  padding: 0 24rpx;
+  color: #999;
+}

@@ -1,0 +1,17 @@
+<block wx:if="{{visible}}">
+  <view class="modal-mask" wx:if="{{mode !== 'coverView'}}">
+    <view class="modal">
+      <view class="title">{{title}}</view>
+      <view class="content">
+        <view wx:if="{{content}}" class="content-text">{{content}}</view>
+        <slot/>
+      </view>
+      <view class="buttons">
+        <button wx:if="{{showCancel}}" class="btn" hover-class="hover" bindtap="onCancel" style="color: {{cancelColor}}">{{cancelText}}</button>
+        <button wx:if="{{!customConfirm}}" class="btn" hover-class="hover" bindtap="onConfirm" style="color: {{confirmColor}}">{{confirmText}}</button>
+        <view wx:else class="btn"><slot name="confirm-view" /></view>
+      </view>
+    </view>
+  </view>
+  <view wx:else>unsupported yet</view>
+</block>

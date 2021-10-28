@@ -1,0 +1,66 @@
+.modal-mask {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .3);
+}
+.modal {
+  width: 536rpx;
+  border-radius: 12rpx;
+  background-color: #fff;
+  color: #333;
+}
+.title {
+  padding: 40rpx 80rpx 20rpx;
+  font-size: 32rpx;
+  line-height: 44rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.content {
+  padding: 0 80rpx 20rpx;
+}
+.content-text {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  font-weight: bold;
+  text-align: center;
+  opacity: .99;
+}
+.buttons {
+  display: flex;
+  border-top: 1rpx solid rgba(0, 0, 0, .08);
+}
+.buttons .btn {
+  position: relative;
+  flex-grow: 1;
+  padding: 0;
+  height: 90rpx;
+  border-radius: 0;
+  line-height: 90rpx;
+  font-weight: bold;
+  font-size: 32rpx;
+  background-color: transparent;
+}
+.buttons .btn::after {
+  display: none;
+}
+.buttons .btn.hover {
+  background-color: #ededed;
+}
+.buttons .btn:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1rpx;
+  border-left: 1rpx solid rgba(0, 0, 0, .08);
+  display: block;
+}

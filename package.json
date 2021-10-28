@@ -1,0 +1,244 @@
+{
+  "name": "sinan",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "clean": "node ./tools/clean.js immediately",
+    "stylelint": "./node_modules/.bin/stylelint '**/*.wxss'",
+    "eslint": "./node_modules/.bin/eslint . --ext .js --max-warnings 0",
+    "tsc": "node ./tools/tsc.js",
+    "test": "./node_modules/.bin/jest --no-cache && rm -rf coverage",
+    "commitlint": "commitlint --color"
+  },
+  "dependencies": {
+    "@tmsfe/tms-bridge": "latest",
+    "@tmsfe/tms-core": "latest",
+    "@tmsfe/tms-runtime": "latest",
+    "@tmsfe/tms-ui": "latest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.10",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^25.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^24.9.0",
+    "chalk": "^3.0.0",
+    "cos-nodejs-sdk-v5": "^2.8.3",
+    "eslint": "^6.8.0",
+    "husky": "^3.1.0",
+    "inquirer": "^7.1.0",
+    "jest": "^25.3.0",
+    "lint-staged": "^9.5.0",
+    "miniprogram-api-typings": "^2.10.3",
+    "miniprogram-ci": "^1.0.94",
+    "ora": "^4.0.3",
+    "postcss": "^8.2.1",
+    "postcss-safe-parser": "^5.0.2",
+    "shelljs": "^0.8.3",
+    "stylelint": "^11.1.1",
+    "stylelint-config-standard": "^19.0.0",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3",
+    "username": "^5.1.0"
+  },
+  "stylelint": {
+    "ignoreFiles": [
+      "miniprogram_npm/**/*.wxss",
+      "modules/realtimebus/**/*.wxss",
+      "modules/route/**/*.wxss",
+      "modules/index/didataxihome/**/*.wxss",
+      "modules/index/ccmhome/**/*.wxss",
+      "modules/sinan-carmall/**/*.wxss"
+    ],
+    "rules": {
+      "unit-no-unknown": [
+        true,
+        {
+          "ignoreUnits": [
+            "rpx"
+          ]
+        }
+      ],
+      "font-family-no-missing-generic-family-keyword": null,
+      "no-empty-source": null,
+      "selector-type-no-unknown": [
+        true,
+        {
+          "ignoreTypes": [
+            "cover-image",
+            "cover-view",
+            "radio",
+            "wx-cover-view",
+            "picker",
+            "page",
+            "navigator",
+            "checkbox",
+            "swiper",
+            "swiper-item",
+            "scroll-view"
+          ]
+        }
+      ]
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@tencent/eslint-config-tencent"
+    ],
+    "globals": {
+      "requirePlugin": "readonly",
+      "App": "readonly",
+      "Page": "readonly",
+      "Component": "readonly",
+      "Behavior": "readonly",
+      "wx": "readonly",
+      "getApp": "readonly",
+      "getCurrentPages": "readonly",
+      "jest": "readonly",
+      "expect": "readonly",
+      "describe": "readonly",
+      "test": "readonly",
+      "beforeEach": "readonly",
+      "beforeAll": "readonly"
+    },
+    "rules": {
+      "linebreak-style": "off",
+      "complexity": [
+        "error",
+        {
+          "max": 36
+        }
+      ],
+      "no-console": "error",
+      "no-mixed-operators": [
+        "error",
+        {
+          "groups": [
+            [
+              "+",
+              "-",
+              "*",
+              "/",
+              "%",
+              "**"
+            ],
+            [
+              "&",
+              "|",
+              "^",
+              "~",
+              "<<",
+              ">>",
+              ">>>"
+            ],
+            [
+              "==",
+              "!=",
+              "===",
+              "!==",
+              ">",
+              ">=",
+              "<",
+              "<="
+            ],
+            [
+              "&&",
+              "||"
+            ],
+            [
+              "in",
+              "instanceof"
+            ]
+          ],
+          "allowSamePrecedence": true
+        }
+      ]
+    },
+    "ignorePatterns": [
+      "node_modules",
+      "modules/realtimebus",
+      "modules/route",
+      "miniprogram_npm",
+      "**/__mocks__/*.js",
+      "cloud/trails/tools/data",
+      "modules/index/ccmhome",
+      "modules/index/didataxihome",
+      "modules/sinan-carmall"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      ".git/"
+    ],
+    "collectCoverage": false,
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/miniprogram_npm/**",
+      "!**/tools/**",
+      "!**/modules/refuelconsumption/components/ec-canvas/**"
+    ],
+    "coverageDirectory": "<rootDir>/coverage",
+    "coverageReporters": [
+      "lcov"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 1,
+        "functions": 1,
+        "lines": 1,
+        "statements": 1
+      }
+    },
+    "reporters": [
+      "default"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "**/*.wxss": [
+      "./node_modules/.bin/stylelint",
+      "git add"
+    ],
+    "**/*.js": [
+      "./node_modules/.bin/eslint --max-warnings 0",
+      "git add"
+    ],
+    "**/*.ts": [
+      "./node_modules/.bin/tsc --typeRoots './node_modules/miniprogram-api-typings' --skipLibCheck --lib 'dom,es6,es7' --target 'es5'",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e .git/COMMIT_EDITMSG",
+      "pre-commit": "lint-staged"
+    }
+  }
+}

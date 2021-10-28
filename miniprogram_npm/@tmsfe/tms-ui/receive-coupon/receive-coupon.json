@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "receive-merchant-coupon": "plugin://receive-merchant-coupon/send-coupon"
+  }
+}

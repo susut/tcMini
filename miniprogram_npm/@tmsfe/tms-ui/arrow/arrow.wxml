@@ -1,0 +1,3 @@
+<view class="arrow-wrap {{direction}}" style="width: {{size}}; height: {{size}};">
+  <view class="arrow" style="border: {{width}} solid {{color}}; border-left-color: transparent; border-bottom-color: transparent"/>
+</view>

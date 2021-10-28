@@ -1,0 +1,124 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  visibility: hidden;
+}
+.drawer.container-visible {
+  visibility: visible;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column; /* 默认纵向布局，底部对齐 */
+  justify-content: flex-end;
+  align-items: center;
+}
+.mask.visible {
+  background-color: rgba(0, 0, 0, .3);
+}
+.top .mask { /* 顶部对齐 */
+  justify-content: flex-start;
+}
+.left .mask { /* 左侧对齐 */
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.right .mask { /* 右侧对齐 */
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.content {
+  position: relative;
+  background-color: #fff;
+}
+.top .content,
+.bottom .content {
+  width: 100%;
+}
+.left .content,
+.right .content {
+  height: 100%;
+}
+
+/* 关闭区域 */
+.round-radius { /* 圆角 */
+  overflow: hidden;
+  border-radius: 24rpx;
+}
+.top .round-radius {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.bottom .round-radius {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.left .round-radius {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.right .round-radius {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.close { /* 关闭按钮 */
+  position: absolute;
+  width: 84rpx;
+  height: 84rpx;
+  z-index: 2;
+}
+.close .icon {
+  margin: 30rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+.top .close {
+  bottom: 0;
+  right: 0;
+}
+.bottom .close {
+  top: 0;
+  right: 0;
+}
+.left .close {
+  top: 0;
+  right: 0;
+}
+.right .close {
+  top: 0;
+  left: 0;
+}
+
+/**
+ * 动画效果
+ */
+
+/* 公共-增加动画监听 */
+.animated .mask { /* mask渐进渐出 */
+  transition: background-color .3s;
+}
+.animated .content {
+  transition: transform .3s ease-in-out;
+  transform: translate3d(0, 100%, 0); /* 默认bottom布局 内容区域初始不可见 */
+}
+.animated.top .content { /* top布局 内容区域初始不可见 */
+  transform: translate3d(0, -100%, 0);
+}
+.animated.right .content { /* right布局 内容区域初始不可见 */
+  transform: translate3d(100%, 0, 0);
+}
+.animated.left .content { /* left布局 内容区域初始不可见 */
+  transform: translate3d(-100%, 0, 0);
+}
+.animated .visible .content,
+.animated.top .visible .content,
+.animated.left .visible .content,
+.animated.right .visible .content {
+  transform: translate3d(0, 0, 0);
+}

@@ -1,0 +1,24 @@
+:host {
+  display: inline-flex;
+}
+.arrow-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.arrow {
+  width: 100%;
+  height: 100%;
+  transform: translateX(-45%) rotate(45deg);
+  box-sizing: border-box;
+}
+.top .arrow {
+  transform: translateY(45%) rotate(-45deg);
+}
+.bottom .arrow {
+  transform: translateY(-45%) rotate(135deg);
+}
+.left .arrow {
+  transform: translateX(45%) rotate(-135deg);
+}

@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "modules/index/carlife/pages/index/index",
+    "modules/ruqi/pages/index/index"
+  ],
+  "usingComponents": {},
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "腾讯出行服务",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于实时公交与车主服务等"
+    }
+  },
+  "plugins": {
+    "ocr-plugin": {
+      "version": "3.0.3",
+      "provider": "wx4418e3e031e551be"
+    }
+  },
+  "subpackages": [
+
+  ],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "networkTimeout": {
+    "request": 10000
+  },
+  "sitemapLocation": "sitemap.json",
+  "resizable": true,
+  "lazyCodeLoading": "requiredComponents",
+  "useExtendedLib": {
+    "weui": true
+  }
+}

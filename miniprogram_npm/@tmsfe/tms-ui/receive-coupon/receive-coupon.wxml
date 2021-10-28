@@ -1,0 +1,11 @@
+<receive-merchant-coupon wx:if="{{readyReceive}}"
+  bindcustomevent="onReceiveCouponResult"
+  send_coupon_params="{{merchantCouponsParam}}"
+  sign="{{sign}}"
+  send_coupon_merchant="{{merchantNo}}"
+>
+  <slot name="elem-receive" bindtap="onTapReceive" />
+</receive-merchant-coupon>
+<view wx:else class="unprepared" catchtap="stopPropagation">
+  <slot name="elem-receive" disabled="{{true}}" bindtap="onNotPrepared" />
+</view>

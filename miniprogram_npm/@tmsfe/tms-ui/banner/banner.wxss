@@ -1,0 +1,81 @@
+:host {
+  display: inline-block;
+  vertical-align: bottom;
+  overflow: hidden;
+}
+
+/* banner区域 */
+.bannerwrap {
+  position: relative;
+  overflow: hidden;
+}
+.bg {
+  z-index: 0;
+  margin: auto;
+}
+.banner {
+  height: 100%;
+  box-sizing: border-box;
+}
+.item-wrapper {
+  box-sizing: border-box;
+}
+.bannerwrap .banner-item {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.corner {
+  position: absolute;
+  z-index: 1;
+}
+.corner-0 {
+  left: 0;
+  top: 0;
+  transform: rotateZ(-90deg);
+}
+.ios.max .corner-0 {
+  top: -1rpx;
+}
+.corner-1 {
+  right: 0;
+  top: 0;
+}
+.corner-2 {
+  right: 0;
+  bottom: 0;
+  transform: rotateZ(90deg);
+}
+.corner-3 {
+  left: 0;
+  bottom: 0;
+  transform: rotateZ(180deg);
+}
+.ios.max .corner-3 {
+  left: -2rpx;
+}
+.indicator {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  left: 0;
+}
+.indicator.left {
+  justify-content: flex-start;
+}
+.indicator.right {
+  justify-content: flex-end;
+}
+.indicator .indicator-item {
+  margin: 0 4rpx;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 5rpx;
+  background-color: #ffffff75;
+}
+.indicator .indicator-item.active {
+  width: 20rpx;
+  background-color: #fff;
+}

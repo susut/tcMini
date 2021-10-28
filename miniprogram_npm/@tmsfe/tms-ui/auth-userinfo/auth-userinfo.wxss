@@ -1,0 +1,54 @@
+.layer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #373737;
+  background-color: rgba(0, 0, 0, .3);
+  text-align: center;
+  z-index: 9999;
+}
+.container {
+  width: 536rpx;
+  height: 732rpx;
+  background-color: #fff;
+  border-radius: 12rpx;
+}
+.title {
+  padding: 26rpx 0;
+  line-height: 44rpx;
+}
+.border {
+  width: 100%;
+  height: 1rpx;
+  background-color: #d8d8d8;
+}
+.desc {
+  padding: 22rpx 0;
+  font-size: 28rpx;
+}
+.desc cover-view:first-child {
+  margin-bottom: 10rpx;
+}
+.tipimg {
+  width: 420rpx;
+  height: 352rpx;
+  margin: 0 auto 0 80rpx;
+}
+.btn {
+  width: 456rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+  border-radius: 12rpx;
+  background-color: #1569f3;
+  color: #fff;
+}
+button.btn wx-cover-view {
+  width: auto;
+  background-color: transparent;
+}

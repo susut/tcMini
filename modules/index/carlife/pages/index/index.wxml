@@ -1,0 +1,32 @@
+<view class="page-index">
+  <view class="header">
+    <view class="user-pic">
+      <open-data type="userAvatarUrl" />
+    </view>
+    <view class="user-location">
+      <view class="city-name">当前城市：深圳市</view>
+    </view>
+  </view>
+  <view class="tab">
+    <view bindtap="chooseTab" mark:curidx="{{0}}" class="{{ ['.tab-active', ''][curidx] }}">车生活</view>
+    <view bindtap="chooseTab" mark:curidx="{{1}}" class="{{ ['', '.tab-active'][curidx] }}">示例页卡</view>
+  </view>
+  <view wx:if="{{ curidx === 0 }}" class="content-info">
+    
+    <view>
+      尝试一下执行\n
+      <text class="init">tms init-module {{'<'}}模块名{{'>'}}</text>\n
+      来初始化一个模块 🙂
+    </view>
+    
+  </view>
+  <view wx:else class="content-info">
+    <view>自定义页卡将以组件的方式引入</view>
+  </view>
+  <view class="desc">
+    <view>这是小程序的首页</view>
+    <view>看到这个页面</view>
+    <view>证明你的项目已经初始化成功</view>
+    <image mode="aspectFit" class="logo" src="{{logo}}" />
+  </view>
+</view>

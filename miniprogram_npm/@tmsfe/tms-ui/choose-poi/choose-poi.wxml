@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="head">
+    <view class="query">
+      <view class="city" bindtap="selectCity">
+        <text>{{uiCity}}</text>
+        <image class="arrow" src="./arrow-down.png" />
+      </view>
+      <input class="input-box" placeholder="输入地点" placeholder-class="input-box-tip" value="{{queryKey}}"
+        bindfocus="onFocus" bindblur="onBlur" bindinput="onInput"
+        focus="{{autoFocus}}" confirm-type="search" />
+      <view hidden="{{!queryKey}}" class="clear" bindtap="onClearInput"><image class="clear-icon" src="./clear.png" /></view>
+    </view>
+    <view class="cancel" bindtap="onCancel">取消</view>
+  </view>
+  <view hidden="{{!historyQueries || !historyQueries.length}}" class="history">
+    <view class="history-queries">
+      <view class="poi" wx:for="{{historyQueries}}" wx:key="index" wx:for-item="poi"
+        data-id="{{poi.id}}" data-name="{{poi.name}}" data-latitude="{{poi.latitude}}" data-longitude="{{poi.longitude}}" data-addr="{{poi.addr}}" data-poi-type="{{poi.poiType}}" bindtap="onClickHistoryQuery">
+        <image class="poi-icon" src="./position.png" />
+        <view class="info">
+          <view class="name">{{poi.name}}</view>
+          <view class="addr">
+            <text wx:if="{{poi.poiType}}">{{poi.poiType}}·</text>
+            <text>{{poi.addr}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="clear-history" bindtap="onClearQueryHistory">清空搜索历史</view>
+  </view>
+  <scroll-view hidden="{{!candidates || !candidates.length}}" scroll-y="{{true}}" class="candidates">
+    <view class="poi" wx:for="{{candidates}}" wx:key="index" wx:for-item="poi"
+      data-id="{{poi.id}}" data-name="{{poi.name}}" data-latitude="{{poi.latitude}}" data-longitude="{{poi.longitude}}" data-addr="{{poi.addr}}" data-poi-type="{{poi.poiType}}"
+      bindtap="onClickPoi">
+      <image class="poi-icon" src="./position.png" />
+      <view class="info">
+        <view class="name">
+          <text class="item {{item.highlight ? 'highlight' : ''}}" wx:for="{{poi.names}}" wx:for-index="nameIndex" wx:key="nameIndex">{{item.str}}</text>
+        </view>
+        <view class="addr">
+          <text wx:if="{{poi.poiType}}">{{poi.poiType}}·</text>
+          <text>{{poi.addr}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

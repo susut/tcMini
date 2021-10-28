@@ -1,0 +1,60 @@
+<!-- 默认输入框 -->
+<scroll-view wx:if="{{!custom}}" id="input" enable-flex scroll-x="{{true}}" lower-threshold="1" bindscrolltolower="onScrollTolower" scroll-into-view="{{scrollto}}" class="input {{showKeyboard&&'z-index'}}" bindtap="clickInput" bindlongpress="onInputLongPress">
+  <view class="innerview">
+    <block wx:if="{{!showKeyboard}}">
+      <view wx:if="{{value}}"class="text number">{{value}}</view>
+      <view wx:else class="text placeholder-class">{{placeholder}}</view>
+    </block>
+    <!-- 聚焦 -->
+    <block wx:else>
+      <block wx:if="{{value}}">
+        <text class="text number" user-select="{{true}}">{{value}}</text>
+        <text id="cursor" class="cursor cursor-class"></text>
+      </block>
+      <block wx:else>
+        <text id="cursor" class="cursor cursor-class"></text>
+        <text decode="{{true}}" class="focusplaceholder focus-placeholder-class">{{focusplaceholder}}</text>
+      </block>
+    </block>
+  </view>
+</scroll-view>
+<!-- 自定义输入框 -->
+<view id="input" class="input {{showKeyboard&&'z-index'}}"  wx:if="{{custom}}" bindtap="clickInput">
+  <slot></slot>
+</view>
+<!-- view模式键盘 -->
+<view wx:if="{{tag=='view'}}" class="keyboard {{showKeyboard&&'show'}}" catch:touchmove="preventMove">
+  <view wx:if="{{title}}" class="label">{{title}}</view>
+  <view class="flex-row">
+    <!-- 数字区 -->
+    <view class="numbers-area">
+      <!-- 1-9 -->
+      <view class="flex-row num-area flex-wrap flex-main-between">
+        <view id="{{index+1}}" wx:for="{{9}}" wx:key="*this" class="btn flex-row-hvc" hover-class="hover" hover-stay-time="{{100}}" catchtap="clickButton">
+          {{index+1}}
+        </view>
+      </view>
+      <!-- 小数点 -->
+      <view wx:if="{{type=='digit'}}" class="flex-row num-area flex-wrap flex-main-between">
+        <view id="0" hover-class="hover" hover-stay-time="{{100}}" class="btn flex-row-hvc zero" catchtap="clickButton">0</view>
+        <view id="." hover-class="hover" hover-stay-time="{{100}}" class="btn flex-row-hvc" catchtap="clickButton">·</view>
+      </view>
+      <!-- 0 -->
+      <view wx:if="{{type=='number'}}" class="flex-row num-area flex-wrap flex-main-around">
+        <view id="0" hover-class="hover" hover-stay-time="{{100}}" class="btn flex-row-hvc" catchtap="clickButton">0</view>
+      </view>
+    </view>
+    <!-- 功能键区 -->
+    <view class="func-area">
+      <view id="del" class="btn flex-row-hvc" hover-class="hover" hover-stay-time="{{100}}" catchtap="clickButton" bindlongpress="onDelLongPress" bindtouchend="onPressEnd">
+        <image class="delicon" src="https://static.img.tai.qq.com/mp/components/plateinput/backspace.png" />
+      </view>
+      <view id="confirm" class="btn flex-row-hvc confirm" hover-class="confirmhover" hover-stay-time="{{150}}" catchtap="clickButton">
+        完成
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:else>暂不支持{{tag}}模式</view>
+<!-- 透明蒙层 -->
+<view wx:if="{{showKeyboard}}" class="ui-mask" catchtap="clickMask" catchtouchmove="touchmoveBlur"></view>

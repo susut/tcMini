@@ -1,0 +1,92 @@
+/* 容器 */
+.container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 容器模式 */
+.full-screen { /* 全屏loading */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+.toast { /* toast模式，无遮罩层 */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.toast.mask { /* toast模式，有遮罩层 */
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+}
+
+/* loading 元素 */
+.loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.toast .loading { /* toast模式下的loading */
+  padding: 8rpx;
+  border-radius: 8rpx;
+  background-color: rgba(0, 0, 0, .8);
+  transform: translateY(-63rpx);
+}
+.vertical { /* 纵向loading */
+  flex-direction: column;
+}
+
+/* 图标 */
+.icon {
+  width: 100rpx;
+  height: 100rpx;
+  animation: rotation .5s infinite linear;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.small .icon { /* 小loading模式下的文字下的图标 */
+  width: 56rpx;
+  height: 56rpx;
+}
+.toast .icon { /* toast模式下的图标 */
+  width: 64rpx;
+  height: 64rpx;
+}
+
+/* 文字 */
+.text {
+  margin-left: 8rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: #999;
+}
+.small .text { /* 小loading模式下的文字 */
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.vertical .text { /* 纵向模式下的文字 */
+  margin-left: 0;
+}
+.toast .text { /* toast模式下的文字 */
+  margin-right: 20rpx;
+  color: #fff;
+  letter-spacing: -.3rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.toast .vertical .text { /* toast模式+纵向模式下的文字 */
+  margin-left: 20rpx;
+}

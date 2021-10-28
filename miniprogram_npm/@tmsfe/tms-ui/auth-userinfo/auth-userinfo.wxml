@@ -1,0 +1,18 @@
+<block wx:if="{{!customUI}}">
+  <!-- 默认的，全屏授权弹窗 -->
+  <cover-view class="layer" wx:if="{{showUserInfoModal}}"><!-- 弹窗阴影蒙层部分 -->
+    <!-- 弹窗主体部分 -->
+    <cover-view class="container">
+      <cover-view class="title">需要您的授权</cover-view>
+      <cover-view class="border"></cover-view>
+      <cover-view class="desc">
+        <cover-view>为了提供更好的服务</cover-view>
+        <cover-view>请在稍后的提示框中点击“允许”</cover-view>
+      </cover-view>
+      <cover-image class="tipimg" src="https://3gimg.qq.com/pcmap/tx_mycar/icon/user_auth.png" />
+      <button class="btn" bindtap="getUserInfo" >我知道了</button>
+    </cover-view>
+  </cover-view>
+</block>
+<!-- 自定义授权UI -->
+<slot wx:else bindtap="getUserInfo" />

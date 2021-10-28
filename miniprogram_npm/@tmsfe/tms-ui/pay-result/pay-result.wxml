@@ -1,0 +1,65 @@
+<view class="wrap" style="padding-top: {{isCustomNavBar ? navbarHeight : 0}}rpx" catchtouchmove="disableScroll">
+  <scroll-view class="content" scroll-y="{{true}}">
+    <view class="top-fill" />
+
+    <view class="static">
+      <image class="icon" src="{{static.icon}}"/>
+      <block wx:if="{{!useViceStaticData}}">
+        <view class="title">{{static.title}}</view>
+        <view class="sub-title">{{subTitle || static.subTitle}}</view>
+      </block>
+      <block wx:else>
+        <view class="title vice">{{static.viceData.title}}</view>
+        <view class="sub-title vice" wx:for="{{static.viceData.subTitle}}" wx:key="viceSubTitle">{{item}}</view>
+      </block>
+      <view class="actions" wx:if="{{static.bussActions.length}}">
+        <block wx:for="{{static.bussActions}}" wx:key="bussActions">
+          <view class="act" hover-class="hover"  bindtap="{{item.type}}">
+            <image class="icon" src="{{item.icon}}" wx:if="{{item.icon}}"/>
+            <text>{{item.title}}</text>
+          </view>
+          <!-- 当多于一个btn的时候，显示vborder -->
+          <view class="vborder" wx:if="{{static.bussActions.length > 1 && index === 0}}"></view>
+        </block>
+      </view>
+      <view class="buttons" wx:if="{{!useViceStaticData && static.payActions.length}}">
+        <block wx:for="{{static.payActions}}" wx:key="payAction">
+          <view wx:if="{{showCommentEntry || !helper.isCommentBtn(item.title)}}" class="btn" hover-class="hover" bindtap="{{item.type}}">{{item.title}}</view>
+        </block>
+      </view>
+      <view class="buttons" wx:else>
+        <view class="btn" hover-class="hover" wx:for="{{static.viceData.payActions}}" wx:key="payAction" bindtap="{{item.type}}">{{item.title}}</view>
+      </view>
+    </view>
+
+    <!-- 订单基本信息之后的slot -->
+    <slot name="slotAfterBasic"></slot>
+
+    <view class="dynamic {{dynamic.displayMode}}" hover-class="hover" wx:if="{{ready && dynamic.title}}" style="background-color: {{dynamic.fullBgColor}};background-image: {{dynamic.backgroundImage}};" bindtap="toTarget">
+      <view class="desc">
+        <image class="icon" src="{{dynamic.image}}" />
+        <view class="slogan">
+          <view class="title" style="color: {{dynamic.titleColor}};font-weight:{{dynamic.titleWeight}};font-size:{{dynamic.titleSize}}rpx">{{dynamic.title}}</view>
+          <view class="sub-title" style="color: {{dynamic.subTitleColor}};font-weight:{{dynamic.subTitleWeight}};font-size:{{dynamic.subTitleSize}}rpx">
+            <text wx:for="{{dynamic.subTitle}}" wx:key="subTitle" style="color: {{item.color}}">{{item.text}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="btn ani" hover-class="hover" style="background-color: {{dynamic.btnBgColor}}; color: {{dynamic.btnColor}}">{{dynamic.btnText}}</view>
+    </view>
+
+    <view class="banners" wx:elif="{{ready && bannerId && hasBanner}}">
+      <banner banner-id="{{bannerId}}" bind:updated="onBannerUpdate" />
+    </view>
+
+    <view class="bottom-fill" />
+  </scroll-view>
+</view>
+<wxs module="helper">
+var isCommentBtn = function(text) {
+  return text.indexOf('评价') != -1;
+}
+module.exports = {
+  isCommentBtn: isCommentBtn,
+};
+</wxs>

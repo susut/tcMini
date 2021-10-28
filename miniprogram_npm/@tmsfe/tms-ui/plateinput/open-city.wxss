@@ -1,0 +1,8 @@
+/* 开城活动特殊样式 */
+.open-city .plate .item {
+  background-color: #fff;
+}
+.open-city .plate .item.focus {
+  background-color: #ffe6a7;
+  border: 0;
+}

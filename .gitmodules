@@ -1,0 +1,3 @@
+[submodule "modules/ruqi"]
+	path = modules/ruqi
+	url = https://gitee.com/sut/ruqi.git

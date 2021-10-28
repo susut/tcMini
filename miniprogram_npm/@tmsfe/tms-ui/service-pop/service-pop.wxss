@@ -1,0 +1,48 @@
+.pop {
+  position: fixed;
+  bottom: 642rpx;
+  right: 16rpx;
+  background-image: linear-gradient(to bottom, rgba(38, 60, 95, .95), rgba(7, 18, 36, .95));
+  width: 198rpx;
+  height: 240rpx;
+  padding: 12rpx;
+  border-radius: 16rpx;
+  box-sizing: border-box;
+  z-index: 99999;
+}
+.title {
+  margin: 18rpx 0 22rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: white;
+  white-space: nowrap;
+}
+.service,
+.problem {
+  margin-top: 12rpx;
+  width: 174rpx;
+  height: 60rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  color: #273956;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+}
+.service-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 4rpx;
+}
+.close {
+  position: absolute;
+  bottom: -52rpx;
+  left: 80rpx;
+  height: 36rpx;
+  width: 36rpx;
+}

@@ -1,0 +1,45 @@
+<view class="bg" />
+
+<view class="wrap">
+  <view class="tip" wx:if="{{tipShow}}">
+    <text class="content">抱歉！所在区域和详细地址添加失败，请重试</text>
+    <image src="{{constant.cdnBase}}close.png" class="tipclose" bindtap="tipTap" />
+  </view>
+  <view class="top">
+    <view class="wechat" bindtap="wechatAddressTap">
+      <image class="icon" src="{{constant.cdnBase}}dizhibu2.png" />
+      <text class="content">从地址簿添加</text>
+    </view>
+    <view class="guid-tips">Tips：从地址簿选择后系统直接填写至下方哦</view>
+
+    <view class="container">
+      <view class="item">
+        <text class="key">姓名</text>
+        <input class="value" value="{{name}}" placeholder="请输入收货人姓名" placeholder-class="holder" maxlength="10" bindinput="nameKeyInput" />
+      </view>
+      <view class="item">
+        <text class="key">手机号</text>
+        <input class="value" type="number" maxlength="15" value="{{phone}}" placeholder="请输入手机号" placeholder-class="holder" bindinput="phoneKeyInput" />
+      </view>
+      <view class="item area">
+        <text class="key">所在地区</text>
+        <picker class="pickerWrap" mode="region" value="{{region}}" bindchange="bindRegionChange">
+          <view class="picker holder" wx:if="{{!region || region.length === 0}}">请选择所在地区</view>
+          <view class="picker" wx:else>{{region[0]}} {{region[1]}} {{region[2]}}</view>
+        </picker>
+        <image class="icon" src="{{constant.cdnBase}}weizhi.png" bindtap="locationTap" />
+      </view>
+      <view class="item bottom {{iPhoneStyle}}">
+        <text class="key">详细地址</text>
+        <textarea class="input-multiline" maxlength="60" value="{{address}}" placeholder="如道路、门牌号、小区、楼栋号、单元室等" placeholder-class="holder" bindinput="addressKeyInput" />
+      </view>
+    </view>
+    <slot></slot>
+  </view>
+
+  <view class="save {{ifCanSave ? 'cansave' : 'cantsave'}} {{deviceClass}}" bindtap="{{ifCanSave ? 'saveTap' : ''}}">{{buttonText}}</view>
+</view>
+
+<wxs module="constant">
+  module.exports = { cdnBase: "https://static.img.tai.qq.com/mp/components/address/" };
+</wxs>

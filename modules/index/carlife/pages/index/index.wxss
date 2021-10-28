@@ -1,0 +1,136 @@
+.page-index {
+  padding: 40rpx;
+}
+.header {
+  display: flex;
+  align-items: center;
+}
+.user-pic {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, .06);
+}
+.user-location {
+  display: flex;
+  align-items: center;
+  min-width: 400rpx;
+  padding: 10rpx;
+  border-radius: 32rpx;
+  background-color: #f2f5fa;
+}
+.city-name {
+  padding-left: 20rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+}
+.tab {
+  margin-top: 30rpx;
+  display: flex;
+}
+.tab > view {
+  width: auto;
+  margin-right: 20rpx;
+  padding: 0 16rpx;
+  border-radius: 25rpx;
+  font-size: 30rpx;
+  line-height: 46rpx;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+}
+.tab-active {
+  color: #2499ff;
+  border-radius: 23rpx;
+  background-color: rgba(61, 173, 253, .095);
+}
+.content-info {
+  display: flex;
+  padding: 40rpx 40rpx;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: auto;
+  min-height: 240rpx;
+  margin-top: 30rpx;
+  border-radius: 20rpx;
+  background-color: #fafafa;
+}
+.content-info .mod,
+.content-info > view {
+  text-align: center;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  color: #333;
+}
+.mod-icon {
+  position: relative;
+  display: inline-block;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 12rpx;
+  border: 2rpx solid #ccc;
+  background: linear-gradient(
+    to top right,
+    #fff 0%,
+    #fff calc(50% - 1rpx),
+    #ccc 50%,
+    #fff calc(50% + 1rpx),
+    #fff 100%
+  );
+  overflow: hidden;
+}
+.mod-icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) calc(50% - 1rpx),
+    #ccc 50%,
+    rgba(255, 255, 255, 0) calc(50% + 1rpx),
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.mod-icon::after {
+  content: "";
+  position: absolute;
+  left: 8rpx;
+  top: 8rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ccc;
+}
+.mod-name {
+  text-align: center;
+  line-height: 34rpx;
+  font-size: 24rpx;
+}
+.desc {
+  margin-top: 40rpx;
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 2;
+  color: #999;
+}
+.init {
+  color: blue;
+  font-style: italic;
+  font-weight: bold;
+}
+.logo {
+  position: fixed;
+  width: 240rpx;
+  height: 80rpx;
+  bottom: 100rpx;
+  right: 50rpx;
+}

@@ -1,0 +1,43 @@
+<!-- 由于导航栏绝对定位脱离文档流，最外层view撑起导航栏高度，尽量减少页面引入自定义导航栏时的样式适配 -->
+<view wx:if="{{enable}}" class="nav-container {{float ? 'float' : ''}} {{styleName}}" style="height: {{statusBarHeight + navBarHeight}}rpx; background-color: {{containerBgColor}};">
+  <view class="nav-wrap" style="height: {{statusBarHeight + navBarHeight}}rpx; color: {{frontColor}}; border-bottom: {{gradient ? borderBottom : 'none'}}">
+    <view class="nav-bg" wx:if="{{!customBackground}}" style="background-color: {{backgroundColor}}; opacity: {{gradient ? bgOpacity : 1}}" />
+    <view style="height: {{statusBarHeight}}rpx;"/>
+    <view catchtap="navBarTouchHandler" class="nav" style="height: {{navBarHeight}}rpx;">
+      <slot wx:if="{{customContent}}" name="content" /><!-- 自定义内部元素 -->
+      <block wx:else><!-- 默认内部元素 -->
+        <view class="left-capsule-wrapper {{enableHomeNav && showHomeBtn || gradient ? 'capsule-visible' : ''}}"><!-- 左侧胶囊 -->
+          <view class="left-capsule {{enableHomeNav && showHomeBtn && (customBackBtn && backBtnVisible || !customBackBtn && showBackBtn) ? 'multiple' : ''}}">
+            <block wx:if="{{customBackBtn}}">
+              <view wx:if="{{backBtnVisible}}" class="btn-wrapper">
+                <slot name="back-btn" /><!-- 自定义返回按钮 -->
+              </view>
+            </block>
+            <block wx:elif="{{showBackBtn}}"><!-- 默认返回按钮 -->
+              <view wx:if="{{backType === 'mp'}}" class="btn-wrapper" catchtap="navBack"><!-- 返回到其他小程序 -->
+                <navigator class="back-btn" hover-class="none" open-type="exit" target="miniProgram">
+                  <image class="icon" src="{{styleName === 'dark' ? './back-dark.png' : './back-light.png' }}" />
+                </navigator>
+              </view>
+              <view wx:else class="btn-wrapper" catchtap="navBack"><!-- 返回上一页 -->
+                <image class="icon" src="{{styleName === 'dark' ? './back-dark.png' : './back-light.png' }}" />
+              </view>
+            </block>
+            <block wx:if="{{enableHomeNav && showHomeBtn}}"><!-- Home按钮 -->
+              <view wx:if="{{customHomeBtn}}" class="btn-wrapper"><!-- 自定义Home按钮 -->
+                <slot name="home-btn" />
+              </view>
+              <view wx:else class="btn-wrapper" catchtap="navHome"><!-- 默认Home按钮 -->
+                <image class="icon" src="{{styleName === 'dark' ? './home-dark.png' : './home-light.png' }}" />
+              </view>
+            </block>
+          </view>
+        </view>
+        <view>
+          <slot wx:if="{{customTitle}}" name="title" />
+          <view class="title" style="opacity: {{gradient ? bgOpacity : 1}};" wx:else>{{title}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

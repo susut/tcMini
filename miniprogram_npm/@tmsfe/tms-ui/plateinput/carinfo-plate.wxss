@@ -1,0 +1,22 @@
+.carinfo-plate .plate .item {
+  background-color: #f2f8ff;
+  border: 1rpx solid #d0e6ff;
+}
+.carinfo-plate .plate .item:last-of-type {
+  background-color: #f3ffe7;
+  border: 1rpx solid #c3ee99;
+}
+.carinfo-plate .item .ph {
+  color: #6dd400;
+  font-size: 18rpx;
+  width: 50rpx;
+}
+.carinfo-plate .item .ph .new-text {
+  font-size: 22rpx;
+  margin-bottom: 2rpx;
+}
+.carinfo-plate .plate .item.focus {
+  border: 2rpx solid #3492ff;
+}
+
+ 

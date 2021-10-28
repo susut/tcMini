@@ -1,0 +1,27 @@
+<view class="wrap {{mode}}" animation="{{animationData}}" style="background-color:{{pullDownBgColor}}">
+  <view class="fav {{floating ? 'floating' : ''}}" style="background-color:{{wrapBgColor}}" wx:if="{{show}}">
+    <view class="arrow" style="margin-left: {{arrowLeft}}px;border-bottom: 9rpx solid {{mode !== 'bubble' ? borderColor : 'transparent'}}; visibility: {{isSinan && mode !== 'bubble' ? 'hidden' : ''}}">
+      <view wx:if="{{mode != 'bubble'}}" class="arrow-body" style="border-bottom-color: {{bgColor}};"></view>
+      <image wx:else class="arrow-img" src="{{constant.cdnBase}}arrow_{{bubbleArrowType === 'white' ? 'white' : 'black'}}.png" />
+    </view>
+    <view wx:if="{{!isSinan}}" class="favorite" style="background-color: {{bgColor}};color: {{color}};border:{{mode != 'bubble' ? 1 : 0}}rpx solid {{borderColor}}">
+      <view class="text">{{content}}</view>
+      <image class="close" src="{{constant.cdnBase}}{{closeIconType === 'white' ? 'close_white.png' : 'close.png'}}" mode="aspectFill" catchtap="close" />
+    </view>
+    <view wx:else class="favorite" style="background-color: {{bgColor}};border:{{mode != 'bubble' ? 1 : 0}}rpx solid {{borderColor}}">
+      <view class="favorite_desc">
+        <image class="close" src="{{constant.cdnBase}}{{closeIconType === 'white' ? 'close_white.png' : 'close.png'}}" mode="aspectFill" catchtap="close" />
+        <view class="text" style="color: {{color}};">{{content}}</view>
+      </view>
+      <view class="add {{showAni ? 'ani' : ''}}" style="{{bubbleButtonStyle}}" bindtap="showGuide">添加</view>
+    </view>
+  </view>
+</view>
+
+<view class="mask {{floating ? 'floating' : ''}}" wx:if="{{showGuide}}" catchtouchmove="disableScroll" bindtap="hideGuide">
+  <image class="guide" src="https://static.img.tai.qq.com/mp/common/add_to_my_miniprogram.png" catchtap="disableScroll" />
+</view>
+
+<wxs module="constant">
+  module.exports = { cdnBase: "https://static.img.tai.qq.com/mp/components/favorite/" };
+</wxs>
